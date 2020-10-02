@@ -1,10 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
-
-interface User {
-  name: string;
-  score: number;
-}
+import { User } from "../App";
 
 type UserListProps = {
   users: User[];
@@ -39,7 +34,3 @@ const UserList = ({ users }: UserListProps) => {
 };
 
 export default UserList;
-
-UserList.propTypes = {
-  users: PropTypes.array,
-};

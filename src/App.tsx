@@ -8,7 +8,7 @@ import PlayerInput from "./components/PlayerInput";
 
 import "./App.css";
 
-interface User {
+export interface User {
   name: string;
   score: number;
 }
@@ -22,6 +22,7 @@ function App() {
     [4, 5],
   ];
 
+  // TODO: replace any
   const canvasRef: any = useRef<HTMLCanvasElement | null>(null);
 
   const [snake, setSnake] = useState<number[][]>(SNAKE_START);
@@ -207,7 +208,7 @@ function App() {
     return () => {
       window.removeEventListener("keydown", handleControl);
     };
-  }, [apple, snake, inputVal, users, user]);
+  }, [apple, snake]);
 
   useInterval(() => {
     if (gameRunning) {
@@ -232,8 +233,8 @@ function App() {
             <PlayerScore highScore={highScore} score={score} user={user} />
           ) : (
             <PlayerInput
-              users={users}
-              value={inputVal}
+              playerNumber={users.length + 1}
+              inputValue={inputVal}
               onInputChange={(val: string) => setInputVal(val)}
               onBtnClick={startGame}
             />

@@ -1,17 +1,26 @@
-import React from "react";
+import React, { MouseEvent, ChangeEvent } from "react";
 
-const PlayerInput = (props: any) => {
+type PlayerInputProps = {
+  playerNumber: number;
+  inputValue: string;
+  onBtnClick: (event: MouseEvent<HTMLButtonElement>) => void;
+  onInputChange: (value: string) => void;
+};
+
+const PlayerInput = (props: PlayerInputProps) => {
   return (
     <div className="container-input">
       <div className="container-message">
-        <p className="text-bold">Ready Player {props.users.length + 1}?</p>
+        <p className="text-bold">Ready Player {props.playerNumber}?</p>
         <p className="text-bold">Enter your name to start</p>
       </div>
       <input
         type="text"
         className="input-name"
-        value={props.value}
-        onChange={(e) => props.onInputChange(e.target.value)}
+        value={props.inputValue}
+        onChange={(e: ChangeEvent<HTMLInputElement>) =>
+          props.onInputChange(e.target.value)
+        }
       />
       <button className="button-go" onClick={props.onBtnClick}>
         Go!

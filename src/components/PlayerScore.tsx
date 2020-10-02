@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 
 type PlayerScoreProps = {
   highScore: number;
@@ -24,9 +23,3 @@ const PlayerScore = ({ highScore, user, score }: PlayerScoreProps) => {
 };
 
 export default PlayerScore;
-
-PlayerScore.propTypes = {
-  user: PropTypes.string,
-  highScore: PropTypes.number,
-  score: PropTypes.number,
-};
