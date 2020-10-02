@@ -7,9 +7,9 @@ type UserListProps = {
 };
 
 const UserList = ({ users }: UserListProps) => {
-  const sorted = users
-    .slice(0, 10)
-    .sort((a, b) => (a.score < b.score ? 1 : -1));
+  const sorted = [...users]
+    .sort((a, b) => (a.score < b.score ? 1 : -1))
+    .slice(0, 10);
 
   return (
     <div className="card score-list">

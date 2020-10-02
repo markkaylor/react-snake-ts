@@ -8,37 +8,41 @@ import PlayerInput from "./components/PlayerInput";
 
 import "./App.css";
 
+// Constants
+const SCALE: number = 10;
+const CANVAS_SIZE: number = 400;
+const MAX_SPEED: number = 20;
+const SNAKE_START: number[][] = [
+  [5, 5],
+  [4, 5],
+];
+
 export interface User {
   name: string;
   score: number;
 }
 
 function App() {
-  const SCALE = 10;
-  const CANVAS_SIZE = 400;
-  const MAX_SPEED = 20;
-  const SNAKE_START: number[][] = [
-    [5, 5],
-    [4, 5],
-  ];
-
   // TODO: replace any
   const canvasRef: any = useRef<HTMLCanvasElement | null>(null);
 
   const [snake, setSnake] = useState<number[][]>(SNAKE_START);
-  const [apple, setApple] = useState<number[]>([20, 4]);
   const [direction, setDirection] = useState<number[]>([0, 0]);
-  const [speed, setSpeed] = useState<number>(100);
+  const [speed, setSpeed] = useState<number>(120);
+
+  const [apple, setApple] = useState<number[]>([20, 4]);
+
   const [score, setScore] = useState<number>(0);
+  const [highScore, setHighScore] = useState<number>(0);
+
   const [gameRunning, setGameRunning] = useState<boolean>(false);
   const [gameOver, setGameOver] = useState<boolean>(false);
 
   const [inputVal, setInputVal] = useState<string>("");
+
   const [user, setUser] = useState<string>("");
   const [users, setUsers] = useState<User[]>([]);
   const [lastUser, setLastUser] = useState<User>({ name: "", score: 0 });
-
-  const [highScore, setHighScore] = useState<number>(0);
 
   const handleControl = (event: KeyboardEvent) => {
     switch (event.key) {
@@ -208,7 +212,7 @@ function App() {
     return () => {
       window.removeEventListener("keydown", handleControl);
     };
-  }, [apple, snake]);
+  }, [apple, snake, users]);
 
   useInterval(() => {
     if (gameRunning) {
