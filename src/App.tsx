@@ -214,7 +214,7 @@ function App() {
     if (gameRunning) {
       loopGame();
     }
-  }, [speed]);
+  }, speed);
 
   return (
     <div className="App">
