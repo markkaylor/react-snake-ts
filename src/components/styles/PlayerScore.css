@@ -1,0 +1,13 @@
+.container-score-board {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  flex: 1;
+}
+
+.game-score-board {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}

@@ -1,0 +1,17 @@
+.container-message {
+  margin-bottom: 1rem;
+}
+
+.button-go {
+  margin-left: 1rem;
+  background-color: white;
+  border: 1px dashed grey;
+  padding: 0.5rem 1rem;
+  border-radius: 3px;
+}
+
+.input-name {
+  border: none;
+  padding: 0.5rem;
+  border-bottom: 1px dashed grey;
+}

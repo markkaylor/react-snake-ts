@@ -1,4 +1,5 @@
 import React from "react";
+import "./styles/PlayerScore.css";
 
 type PlayerScoreProps = {
   highScore: number;

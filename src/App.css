@@ -26,10 +26,6 @@ canvas {
   padding: 2rem;
 }
 
-.container-message {
-  margin-bottom: 1rem;
-}
-
 .text-bold {
   font-weight: bold;
   margin: 0.5rem 0;
@@ -53,58 +49,11 @@ canvas {
   font-weight: bold;
 }
 
-.button-go {
-  margin-left: 1rem;
-  background-color: white;
-  border: 1px dashed grey;
-  padding: 0.5rem 1rem;
-  border-radius: 3px;
-}
-
 button:hover {
   cursor: pointer;
-}
-
-.input-name {
-  border: none;
-  padding: 0.5rem;
-  border-bottom: 1px dashed grey;
 }
 
 input:focus,
 button:focus {
   outline: none;
-}
-
-.container-score-board {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  flex: 1;
-}
-
-.game-score-board {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 0.75rem;
-}
-
-.score-board {
-  margin-top: 2rem;
-  width: 200px;
-}
-
-.list-item {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 1rem;
-}
-
-.list-title {
-  border-bottom: 1px dashed grey;
-}
-
-.container-list-title {
-  margin-bottom: 1rem;
 }

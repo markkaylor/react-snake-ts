@@ -1,5 +1,6 @@
 import React from "react";
 import { User } from "../App";
+import "./styles/PlayerScoreList.css";
 
 type UserListProps = {
   users: User[];
@@ -11,7 +12,7 @@ const UserList = ({ users }: UserListProps) => {
     .sort((a, b) => (a.score < b.score ? 1 : -1));
 
   return (
-    <div className="card score-board">
+    <div className="card score-list">
       <h2>Top 10</h2>
       <div className="list-item container-list-title">
         <span className="list-title">Rank</span>

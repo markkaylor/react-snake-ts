@@ -1,4 +1,5 @@
 import React, { MouseEvent, ChangeEvent } from "react";
+import "./styles/PlayerInput.css";
 
 type PlayerInputProps = {
   playerNumber: number;
