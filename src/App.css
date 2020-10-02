@@ -36,3 +36,88 @@
     transform: rotate(360deg);
   }
 }
+
+canvas {
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+}
+
+#game-board {
+  width: 400px;
+  margin: 0 auto;
+}
+
+.player-input {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 12rem;
+  margin: 2rem 0;
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+  padding: 2rem;
+  border-radius: 4px;
+}
+
+.container-message {
+  margin-bottom: 1rem;
+}
+
+.text-bold {
+  font-weight: bold;
+  margin: 0.5rem 0;
+}
+
+.game-title {
+  margin: 2.5px 0;
+}
+
+.align-center {
+  margin: auto;
+}
+
+.text-small {
+  margin-top: 10px;
+  font-size: 11px;
+}
+
+.text-italic {
+  font-style: italic;
+  font-weight: bold;
+}
+
+.button-go {
+  margin-left: 1rem;
+  background-color: white;
+  border: 1px dashed grey;
+  padding: 0.5rem 1rem;
+  border-radius: 3px;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.input-name {
+  border: none;
+  padding: 0.5rem;
+  border-bottom: 1px dashed grey;
+}
+
+input:focus,
+button:focus {
+  outline: none;
+}
+
+.container-score-board {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  flex: 1;
+}
+
+.game-score-board {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
