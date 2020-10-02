@@ -11,11 +11,13 @@ import "./App.css";
 // Constants
 const SCALE: number = 10;
 const CANVAS_SIZE: number = 400;
+const INITIAL_SPEED: number = 100;
 const MAX_SPEED: number = 20;
 const SNAKE_START: number[][] = [
   [5, 5],
   [4, 5],
 ];
+const APPLE_START: number[] = [20, 4];
 
 export interface User {
   name: string;
@@ -28,9 +30,9 @@ function App() {
 
   const [snake, setSnake] = useState<number[][]>(SNAKE_START);
   const [direction, setDirection] = useState<number[]>([0, 0]);
-  const [speed, setSpeed] = useState<number>(120);
+  const [speed, setSpeed] = useState<number>(INITIAL_SPEED);
 
-  const [apple, setApple] = useState<number[]>([20, 4]);
+  const [apple, setApple] = useState<number[]>(APPLE_START);
 
   const [score, setScore] = useState<number>(0);
   const [highScore, setHighScore] = useState<number>(0);
@@ -153,7 +155,7 @@ function App() {
       updateApple(snakeCopy);
       // Increase speed
       if (speed > MAX_SPEED) {
-        setSpeed(speed - SCALE);
+        setSpeed(speed - 2);
       }
       // Increase score
       setScore(score + 10);
@@ -173,10 +175,10 @@ function App() {
     setGameRunning(false);
     setGameOver(true);
     setSnake(SNAKE_START);
-    setApple([20, 4]);
+    setApple(APPLE_START);
     setScore(0);
     setDirection([0, 0]);
-    setSpeed(100);
+    setSpeed(INITIAL_SPEED);
     setInputVal("");
     setUser("");
   };

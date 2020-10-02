@@ -13,7 +13,7 @@ const PlayerScore = ({ highScore, user, score }: PlayerScoreProps) => {
       <p className="text-bold align-center">Score to Beat: {highScore}</p>
       <div className="game-score-board">
         <span>
-          Current Player: <span className="text-bold">{user}</span>
+          Current Player: <span className="text-bold wrap-item">{user}</span>
         </span>
         <span>
           Score: <span className="text-bold">{score}</span>

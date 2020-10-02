@@ -23,7 +23,7 @@ const UserList = ({ users }: UserListProps) => {
         sorted.map((user, index) => (
           <div className="list-item" key={user.score + index + user.name}>
             <span>{index + 1}.</span>
-            <span>{user.name}</span>
+            <span className="wrap-item">{user.name}</span>
             <span>{user.score}</span>
           </div>
         ))

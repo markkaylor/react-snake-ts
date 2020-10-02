@@ -33,6 +33,10 @@ canvas {
 
 .game-title {
   margin: 2.5px 0;
+  width: 340px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .align-center {
@@ -56,4 +60,15 @@ button:hover {
 input:focus,
 button:focus {
   outline: none;
+}
+
+.container-left {
+  width: 400px;
+}
+
+.wrap-item {
+  width: 100px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
