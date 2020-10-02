@@ -1,6 +1,10 @@
 import React, { useRef, useEffect, useState } from "react";
 import useInterval from "./useInterval";
-import UserList from "./components/UserList";
+
+// Components
+import PlayerScoreList from "./components/PlayerScoreList";
+import PlayerScore from "./components/PlayerScore";
+import PlayerInput from "./components/PlayerInput";
 
 import "./App.css";
 
@@ -22,20 +26,17 @@ function App() {
 
   const [snake, setSnake] = useState<number[][]>(SNAKE_START);
   const [apple, setApple] = useState<number[]>([20, 4]);
-
   const [direction, setDirection] = useState<number[]>([0, 0]);
   const [speed, setSpeed] = useState<number>(100);
-
   const [score, setScore] = useState<number>(0);
-
   const [gameRunning, setGameRunning] = useState<boolean>(false);
   const [gameOver, setGameOver] = useState<boolean>(false);
 
-  const [inputVal, setInputVal] = useState<string | null>(null);
+  const [inputVal, setInputVal] = useState<string>("");
   const [user, setUser] = useState<string>("");
   const [users, setUsers] = useState<User[]>([]);
-
   const [lastUser, setLastUser] = useState<User>({ name: "", score: 0 });
+
   const [highScore, setHighScore] = useState<number>(0);
 
   const handleControl = (event: KeyboardEvent) => {
@@ -61,10 +62,10 @@ function App() {
     }
   };
 
-  // Check snake hasn't exceeded canvas boundaries
   const isInBounds = (headX: number, headY: number) => {
     const futureX = headX * SCALE + direction[0] * SCALE;
     const futureY = headY * SCALE + direction[1] * SCALE;
+    // Check snakes next move won't exceed boundary
     return (
       futureX < CANVAS_SIZE &&
       futureX >= 0 &&
@@ -75,6 +76,7 @@ function App() {
 
   const isAlive = (headX: number, headY: number) => {
     const snakeCopy = snake.slice(1);
+    // Check if snake hit itself
     for (const el of snakeCopy) {
       if (headX === el[0] && headY === el[1]) return false;
     }
@@ -83,6 +85,7 @@ function App() {
   };
 
   const generateRandomCoordinate = () => {
+    // Return a random number within the canvas
     return Math.floor((Math.random() * CANVAS_SIZE) / SCALE);
   };
 
@@ -127,9 +130,8 @@ function App() {
 
   const startGame = () => {
     if (inputVal) {
-      console.log("log", users.length);
       setUser(inputVal);
-      setInputVal(null);
+      setInputVal("");
       setGameOver(false);
       setGameRunning(true);
       setDirection([1, 0]);
@@ -170,7 +172,7 @@ function App() {
     setScore(0);
     setDirection([0, 0]);
     setSpeed(100);
-    setInputVal(null);
+    setInputVal("");
     setUser("");
   };
 
@@ -205,7 +207,7 @@ function App() {
     return () => {
       window.removeEventListener("keydown", handleControl);
     };
-  }, [apple, snake]);
+  }, [apple, snake, inputVal, users, user]);
 
   useInterval(() => {
     if (gameRunning) {
@@ -215,8 +217,8 @@ function App() {
 
   return (
     <div className="App">
-      <div id="game-board">
-        <div className="player-input">
+      <div className="container-left">
+        <div className="message-board card">
           {gameOver ? (
             <div>
               <h1 className="game-title">Game Over {lastUser.name}!</h1>
@@ -227,44 +229,19 @@ function App() {
           )}
 
           {user ? (
-            <div className="container-score-board">
-              <p className="text-bold align-center">
-                Score to Beat: {highScore}
-              </p>
-              <div className="game-score-board">
-                <span>
-                  Current Player: <span className="text-bold">{user}</span>
-                </span>
-                <span>
-                  Score: <span className="text-bold">{score}</span>
-                </span>
-              </div>
-            </div>
+            <PlayerScore highScore={highScore} score={score} user={user} />
           ) : (
-            <div className="container-input">
-              <div className="container-message">
-                <p className="text-bold">Ready Player {users.length + 1}?</p>
-                <p className="text-bold">Enter your name to start</p>
-              </div>
-              <input
-                type="text"
-                className="input-name"
-                onChange={(e: any) => {
-                  setInputVal(e.target.value);
-                }}
-              />
-              <button className="button-go" onClick={startGame}>
-                Go!
-              </button>
-              <p className="text-small text-italic">
-                Use the arrow keys to control the snake
-              </p>
-            </div>
+            <PlayerInput
+              users={users}
+              value={inputVal}
+              onInputChange={(val: string) => setInputVal(val)}
+              onBtnClick={startGame}
+            />
           )}
         </div>
         <canvas ref={canvasRef} height={CANVAS_SIZE} width={CANVAS_SIZE} />
-        <UserList users={users} />
       </div>
+      <PlayerScoreList users={users} />
     </div>
   );
 }
