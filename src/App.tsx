@@ -11,7 +11,7 @@ import "./App.css";
 // Constants
 const SCALE: number = 10;
 const CANVAS_SIZE: number = 400;
-const INITIAL_SPEED: number = 100;
+const INITIAL_SPEED: number = 120;
 const MAX_SPEED: number = 20;
 const SNAKE_START: number[][] = [
   [5, 5],
@@ -149,13 +149,13 @@ function App() {
     updateSnake();
     // Check if snake head position is equal to apple position
     if (headX === apple[0] && headY === apple[1]) {
-      const snakeCopy: number[][] = [...snake];
+      const snakeCopy = [...snake];
       growSnake(snakeCopy);
       // Move apple
       updateApple(snakeCopy);
       // Increase speed
       if (speed > MAX_SPEED) {
-        setSpeed(speed - 2);
+        setSpeed(speed - 4);
       }
       // Increase score
       setScore(score + 10);
